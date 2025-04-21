@@ -1,0 +1,113 @@
+/**
+ * Copyright 2025 ChrisSarpong
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+import { LitElement, html, css } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+
+/**
+ * `vary-header`
+ *
+ * @demo index.html
+ * @element vary-header
+ */
+export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
+  static get tag() {
+    return "vary-header";
+  }
+
+  constructor() {
+    super();
+    this.title = "";
+    this.headerbar = "";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      title: "Title",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL(
+          "./locales/@yourOrganization/portfolio-very-theme.ar.json",
+          import.meta.url
+        ).href + "/../",
+      locales: ["ar", "es", "hi", "zh"],
+    });
+  }
+
+  // Lit reactive properties
+  static get properties() {
+    return {
+      ...super.properties,
+      title: { type: String },
+      headerbar: { type: Object },
+    };
+  }
+
+  // Lit scoped styles
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          color: var(--ddd-theme-primary);
+          background-color: var(--ddd-theme-accent);
+          font-family: var(--ddd-font-navigation);
+        }
+        .wrapper {
+          margin: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-4);
+        }
+        h3 span {
+          font-size: var(--vary-header-label-font-size, var(--ddd-font-size-s));
+        }
+        .headerbar {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: var(--ddd-theme-accent);
+          position: fixed;
+          top: 100px;
+          left: 0;
+          height: 100px;
+          width: 100%;
+        }
+        .button {
+          background-color: var(--ddd-theme-default-keystoneYellow);
+          color: var(--ddd-theme-default-keystoneBlack);
+          border: none;
+          padding: var(--ddd-spacing-2);
+          border-radius: var(--ddd-border-radius);
+          font-size: var(--ddd-font-size-lg);
+        }
+      `,
+    ];
+  }
+
+  // Lit render the HTML
+  render() {
+    return html` <div class="wrapper">
+      <h3><span>${this.t.title}:</span> ${this.title}</h3>
+      <div class="headerbar">
+        <h3>${this.headerbar}</h3>
+        <button class="button">Click Me</button>
+        <button class="button">Click Me</button>
+        <button class="button">Click Me</button>
+        <slot></slot>
+      </div>
+    </div>`;
+  }
+
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
+}
+
+globalThis.customElements.define(VaryHeader.tag, VaryHeader);
