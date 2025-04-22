@@ -36,6 +36,16 @@
             },
             {
               "kind": "field",
+              "name": "header",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "header"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -51,6 +61,14 @@
               },
               "default": "\"\"",
               "fieldName": "title"
+            },
+            {
+              "name": "header",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "header"
             }
           ],
           "mixins": [
@@ -123,6 +141,16 @@
             },
             {
               "kind": "field",
+              "name": "header",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "header"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -138,6 +166,14 @@
               },
               "default": "\"\"",
               "fieldName": "title"
+            },
+            {
+              "name": "header",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "header"
             }
           ],
           "mixins": [

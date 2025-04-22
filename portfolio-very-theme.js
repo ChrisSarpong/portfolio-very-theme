@@ -20,7 +20,7 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
-    this.headerbar = ""; //Yes you would do the whole this.thing bc this is being called in aother class
+    this.header = ""; //Yes you would do the whole this.thing bc this is being called in aother class
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -41,7 +41,7 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      headerbar: { type: Object }, // assuming Headbar is object
+      header: { type: Object }, // assuming Headbar is object
     };
   }
 
@@ -74,8 +74,7 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html` <div class="wrapper">
       <h3><span>${this.t.title}:</span> ${this.title}</h3>
-      <div class="headerbar">
-        <h3>${this.headerbar}</h3>
+      <div class="header">
         <slot></slot>
       </div>
     </div>`;

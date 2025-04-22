@@ -20,7 +20,7 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
-    this.headerbar = "";
+    this.header = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -42,7 +42,7 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      headerbar: { type: Object },
+      header: { type: Object },
     };
   }
 
@@ -64,16 +64,17 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
         h3 span {
           font-size: var(--vary-header-label-font-size, var(--ddd-font-size-s));
         }
-        .headerbar {
+        .header {
           display: flex;
           justify-content: center;
           align-items: center;
           background-color: var(--ddd-theme-accent);
           position: fixed;
-          top: 100px;
+          top: 50px;
           left: 0;
           height: 100px;
-          width: 100%;
+          right: 0;
+          z-index: 1;
         }
         .button {
           background-color: var(--ddd-theme-default-keystoneYellow);
@@ -91,8 +92,8 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html` <div class="wrapper">
       <h3><span>${this.t.title}:</span> ${this.title}</h3>
-      <div class="headerbar">
-        <h3>${this.headerbar}</h3>
+      <div class="header">
+        <h3>${this.header}</h3>
         <button class="button">Click Me</button>
         <button class="button">Click Me</button>
         <button class="button">Click Me</button>
