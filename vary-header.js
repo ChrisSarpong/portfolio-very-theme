@@ -26,15 +26,6 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL(
-          "./locales/@yourOrganization/portfolio-very-theme.ar.json",
-          import.meta.url
-        ).href + "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
   }
 
   // Lit reactive properties
@@ -65,11 +56,14 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--vary-header-label-font-size, var(--ddd-font-size-s));
         }
         .header {
+          // you need to make this a diffrent color
+          // buttons do not stand out enough
           display: flex;
           justify-content: center;
           align-items: center;
           background-color: var(--ddd-theme-accent);
-          position: fixed;
+          border: 3px solid var(--ddd-theme-default-keystoneBlack);
+          position: fixed; //this mean that it will move with the page. lwk dont like that func
           top: 50px;
           left: 0;
           height: 100px;
@@ -81,22 +75,35 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--ddd-theme-default-keystoneBlack);
           border: none;
           padding: var(--ddd-spacing-2);
+          margin: var(--ddd-spacing-6);
           border-radius: var(--ddd-border-radius);
           font-size: var(--ddd-font-size-lg);
+        }
+        .button:hover {
+          background-color: var(--ddd-theme-default-keystoneBlack);
+          color: var(--ddd-theme-default-keystoneYellow);
+        }
+        .button:active {
+          background-color: var(--ddd-theme-default-keystoneYellow);
+          color: var(--ddd-theme-default-keystoneBlack);
         }
       `,
     ];
   }
 
   // Lit render the HTML
+  //one of the styles you wanted to add was have portfolio very theme fixed atop of the header
   render() {
     return html` <div class="wrapper">
-      <h3><span>${this.t.title}:</span> ${this.title}</h3>
+      <!-- <h3><span>${this.t.title}:</span> ${this.title}</h3> -->
       <div class="header">
-        <h3>${this.header}</h3>
-        <button class="button">Click Me</button>
-        <button class="button">Click Me</button>
-        <button class="button">Click Me</button>
+        <!-- <h3>${this
+          .header}</h3>  If you want the page thing you use this -->
+        <button class="button">Page One</button>
+        <button class="button">Page Two</button>
+        <button class="button">Page Three</button>
+        <button class="button">Page Four</button>
+        <button class="button">Contact Me</button>
         <slot></slot>
       </div>
     </div>`;
@@ -105,10 +112,6 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
   /**
    * haxProperties integration via file reference
    */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(VaryHeader.tag, VaryHeader);

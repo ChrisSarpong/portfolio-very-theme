@@ -26,6 +26,12 @@
         "title": "title",
         "description": "",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "header",
+        "title": "header",
+        "description": "",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [],
@@ -43,7 +49,8 @@
       "tag": "portfolio-very-theme",
       "content": "",
       "properties": {
-        "title": "\"\""
+        "title": "\"\"",
+        "header": "\"\""
       }
     }
   ]

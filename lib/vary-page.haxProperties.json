@@ -7,7 +7,7 @@
   "canEditSource": true,
   "contentEditable": false,
   "gizmo": {
-    "title": "vary header",
+    "title": "vary page",
     "description": "",
     "icon": "icons:android",
     "color": "purple",
@@ -26,12 +26,6 @@
         "title": "title",
         "description": "",
         "inputMethod": "textfield"
-      },
-      {
-        "property": "header",
-        "title": "header",
-        "description": "",
-        "inputMethod": "textfield"
       }
     ],
     "advanced": [],
@@ -46,11 +40,10 @@
   },
   "demoSchema": [
     {
-      "tag": "vary-header",
+      "tag": "vary-page",
       "content": "",
       "properties": {
-        "title": "\"\"",
-        "header": "\"\""
+        "title": "\"\""
       }
     }
   ]

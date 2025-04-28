@@ -5,35 +5,36 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import "./vary-header.js";
-import "./vary-page.js";
 
 /**
- * `portfolio-very-theme`
+ * `vary-page`
  *
  * @demo index.html
- * @element portfolio-very-theme
+ * @element vary-page
  */
-export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
+export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
   static get tag() {
-    return "portfolio-very-theme";
+    return "vary-page";
   }
 
   constructor() {
     super();
     this.title = "";
-    this.header = ""; //Yes you would do the whole this.thing bc this is being called in aother class
     this.t = this.t || {};
     this.t = {
       ...this.t,
       title: "Title",
     };
+    this.title = "Pages";
+    this.description = "";
+    this.image = "";
     this.registerLocalization({
-      // most likely do need this
       context: this,
       localesPath:
-        new URL("./locales/portfolio-very-theme.ar.json", import.meta.url)
-          .href + "/../",
+        new URL(
+          "./locales/@yourOrganization/portfolio-very-theme.ar.json",
+          import.meta.url
+        ).href + "/../",
       locales: ["ar", "es", "hi", "zh"],
     });
   }
@@ -43,7 +44,8 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      header: { type: Object }, // assuming Headbar is object
+      description: { type: String },
+      image: { type: String },
     };
   }
 
@@ -63,23 +65,27 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
           padding: var(--ddd-spacing-4);
         }
         h3 span {
-          font-size: var(
-            --portfolio-very-theme-label-font-size,
-            var(--ddd-font-size-s)
-          );
+          font-size: var(--vary-page-label-font-size, var(--ddd-font-size-s));
         }
       `,
     ];
   }
 
   // Lit render the HTML
+  // using the slotted method so you can jsut call all of them in HTML
   render() {
     return html` <div class="wrapper">
-      <vary-header></vary-header>
-      <vary-page></vary-page>
-      <!-- <h3><span>${this.t.title}:</span> ${this.title}</h3> -->
-      <div class="header">
-        <!-- <h3>${this.header}</h3> -->
+      <h3><span>${this.t.title}:</span> ${this.title}</h3>
+      <div class="Pages">
+        <h1>Welcome to Page one</h1>
+        <p>This is the first page of the Vary Page component.</p>
+        <img
+          src="${this.image || ""}"
+          alt="${this.title || "Page image"}"
+          class="img"
+        />
+        <div class="title">${this.title}</div>
+        <div class="description"></div>
         <slot></slot>
       </div>
     </div>`;
@@ -94,4 +100,4 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
   }
 }
 
-globalThis.customElements.define(PortfolioVeryTheme.tag, PortfolioVeryTheme);
+globalThis.customElements.define(VaryPage.tag, VaryPage);

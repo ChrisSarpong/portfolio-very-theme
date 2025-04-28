@@ -124,13 +124,6 @@
             },
             {
               "kind": "field",
-              "name": "haxProperties",
-              "static": true,
-              "description": "haxProperties integration via file reference",
-              "readonly": true
-            },
-            {
-              "kind": "field",
               "name": "title",
               "privacy": "public",
               "type": {
@@ -208,6 +201,93 @@
           "declaration": {
             "name": "VaryHeader",
             "module": "vary-header.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "vary-page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`vary-page`",
+          "name": "VaryPage",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, title: \"Title\", }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "vary-page",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VaryPage",
+          "declaration": {
+            "name": "VaryPage",
+            "module": "vary-page.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "VaryPage",
+            "module": "vary-page.js"
           }
         }
       ]
