@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { ref } from "lit/directives/ref.js";
 
 /**
  * `vary-page`
@@ -18,34 +19,21 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   constructor() {
+    //
     super();
-    this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    this.title = "Pages";
+    this.title =
+      "fdf "; /* the title of the page should be linked to the button */
     this.description = "";
     this.image = "";
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL(
-          "./locales/@yourOrganization/portfolio-very-theme.ar.json",
-          import.meta.url
-        ).href + "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
   }
 
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
-      title: { type: String },
-      description: { type: String },
-      image: { type: String },
+      title: { type: String, reflect: true },
+      description: { type: String, reflect: true },
+      image: { type: String, reflect: true },
     };
   }
 
@@ -57,15 +45,56 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
         :host {
           display: block;
           color: var(--ddd-theme-primary);
-          background-color: var(--ddd-theme-accent);
+          /* background-color: var(--ddd-theme-accent); */
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-4);
         }
         h3 span {
           font-size: var(--vary-page-label-font-size, var(--ddd-font-size-s));
+        } /* // need to define image and description and image */
+        .Pages {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-start;
+          text-align: left;
+          height: 100%;
+        }
+        .text-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin-right: auto;
+        }
+        .img {
+          width: 100%;
+          height: auto;
+          max-width: 600px;
+          border-radius: 8px;
+          margin-top: 0;
+          margin-left: auto;
+        }
+        .Pages h1 {
+          margin: 0;
+          font-size: var(--ddd-font-size-xl);
+        }
+        .Pages p {
+          margin: 0;
+          margin-top: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-m);
+        }
+        .Description {
+          margin: 0;
+          margin-top: var(--ddd-spacing-2);
         }
       `,
     ];
@@ -75,17 +104,16 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
   // using the slotted method so you can jsut call all of them in HTML
   render() {
     return html` <div class="wrapper">
-      <h3><span>${this.t.title}:</span> ${this.title}</h3>
       <div class="Pages">
-        <h1>Welcome to Page one</h1>
-        <p>This is the first page of the Vary Page component.</p>
+        <div class="text-container">
+          <h1>${this.title}</h1>
+          <p>${this.description}</p>
+        </div>
         <img
-          src="${this.image || ""}"
+          src="${this.image}"
           alt="${this.title || "Page image"}"
           class="img"
         />
-        <div class="title">${this.title}</div>
-        <div class="description"></div>
         <slot></slot>
       </div>
     </div>`;

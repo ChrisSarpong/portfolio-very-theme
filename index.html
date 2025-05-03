@@ -21,8 +21,8 @@
       }
       portfolio-very-theme {
         margin: var(--ddd-spacing-2);
-        border: var(--ddd-border-md);
-        border-radius: var(--ddd-radius-lg);
+        /* border: var(--ddd-border-md);
+        border-radius: var(--ddd-radius-lg); taken out bc it was creating a boarder */ 
       }
       portfolio-very-theme:hover {
         box-shadow: var(--ddd-boxShadow-sm);
@@ -39,11 +39,14 @@
 
   <body>
     <div id="demo">
-      <h1>portfolio-very-theme</h1>
+      <h1>portfolio-very-theme</h1> <!-- Delete this when time to submit-->
       <!-- this is going to do whatever the tag's defaults are -->
-      <h2>Default</h2>
-      <portfolio-very-theme data-accent="2" data-primary="17"></portfolio-very-theme>
-     
+      
+    <portfolio-very-theme data-accent="2" data-primary="17" title = "About" description=" This is chrisyopher sarpong when he had turte illness." image="https://content.mycutegraphics.com/graphics/turtle/turtle-holding-pencil.png" ></portfolio-very-theme>
+     <portfolio-very-theme data-accent="2" data-primary="17" title = "Resume" description=" This is chris as a book tho.... a little odd but we dont judge" image="https://t4.ftcdn.net/jpg/02/14/19/29/360_F_214192955_3J4FVB4DzG9fTqIcglPrB4kbqwLyC7s6.jpg" ></portfolio-very-theme>
+     <portfolio-very-theme data-accent="2" data-primary="17" title = "Projects" description=" This is where projects go, but look a cool crocidle" image="https://www.shutterstock.com/image-vector/illustration-crocodile-good-pose-using-600nw-1881341704.jpg" ></portfolio-very-theme>
+     <portfolio-very-theme data-accent="2" data-primary="17" title = "Work Experence" description=" PLANKETOOOOOOOOOn" image=" https://www.picgifs.com/clip-art/cartoons/spongebob/clip-art-spongebob-838146.jpg" ></portfolio-very-theme>
+      <portfolio-very-theme data-accent="2" data-primary="17" title = "Contact ME" description=" moooooooooooo!" image="https://t3.ftcdn.net/jpg/02/97/85/52/360_F_297855292_s7F5zARGBAVz9EN3jICdVq3TbNgJcLvL.jpg" ></portfolio-very-theme>
       
     </div>
     <script type="module" src="./portfolio-very-theme.js"></script>

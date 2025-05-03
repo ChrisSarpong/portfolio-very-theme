@@ -34,6 +34,7 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       header: { type: Object },
+      activeButton: { type: String }, //made for the stateful buttons
     };
   }
 
@@ -45,7 +46,7 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
         :host {
           display: block;
           color: var(--ddd-theme-primary);
-          background-color: var(--ddd-theme-accent);
+          /* background-color: var(--ddd-theme-accent); causing random box  */
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
@@ -56,26 +57,37 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--vary-header-label-font-size, var(--ddd-font-size-s));
         }
         .header {
-          // you need to make this a diffrent color
-          // buttons do not stand out enough
+          /* // you need to make this a diffrent color
+          // buttons do not stand out enough */
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
           background-color: var(--ddd-theme-accent);
           border: 3px solid var(--ddd-theme-default-keystoneBlack);
-          position: fixed; //this mean that it will move with the page. lwk dont like that func
-          top: 50px;
+          position: fixed;
+          /* //this mean that it will move with the page. */
+          top: 0;
           left: 0;
           height: 100px;
           right: 0;
           z-index: 1;
+          width: 100%;
+          box-sizing: border-box;
+          overflow: hidden;
         }
+        /* // issue: buttons are not filling to the space  */
         .button {
           background-color: var(--ddd-theme-default-keystoneYellow);
           color: var(--ddd-theme-default-keystoneBlack);
           border: none;
           padding: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-6);
+          flex: 1;
+          max-width: 150px;
+          /* // this is stopping it from speakding to the whole page, idk hot to change that  */
+          min-width: 100px;
+          text-align: center;
+          box-sizing: border-box;
           border-radius: var(--ddd-border-radius);
           font-size: var(--ddd-font-size-lg);
         }
@@ -99,11 +111,21 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
       <div class="header">
         <!-- <h3>${this
           .header}</h3>  If you want the page thing you use this -->
-        <button class="button">Page One</button>
-        <button class="button">Page Two</button>
-        <button class="button">Page Three</button>
-        <button class="button">Page Four</button>
-        <button class="button">Contact Me</button>
+        <button class="button" @click="${() => (this.title = "About")}">
+          Page One
+        </button>
+        <button class="button" @click="${() => (this.title = "Page Two")}">
+          Page Two
+        </button>
+        <button class="button" @click="${() => (this.title = "Page Three")}">
+          Page Three
+        </button>
+        <button class="button" @click="${() => (this.title = "Page Four")}">
+          Page Four
+        </button>
+        <button class="button" @click="${() => (this.title = "Contact Me")}">
+          Contact Me
+        </button>
         <slot></slot>
       </div>
     </div>`;

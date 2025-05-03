@@ -23,19 +23,14 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.title = "";
     this.header = ""; //Yes you would do the whole this.thing bc this is being called in aother class
+    this.title = "Pages ";
+    this.description = "";
+    this.image = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      // most likely do need this
-      context: this,
-      localesPath:
-        new URL("./locales/portfolio-very-theme.ar.json", import.meta.url)
-          .href + "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
   }
 
   // Lit reactive properties
@@ -44,6 +39,9 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       header: { type: Object }, // assuming Headbar is object
+      title: { type: String, reflect: true },
+      description: { type: String, reflect: true },
+      image: { type: String, reflect: true },
     };
   }
 
@@ -55,7 +53,7 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
         :host {
           display: block;
           color: var(--ddd-theme-primary);
-          background-color: var(--ddd-theme-accent);
+          /* background-color: var(--ddd-theme-accent); */
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
@@ -76,7 +74,11 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html` <div class="wrapper">
       <vary-header></vary-header>
-      <vary-page></vary-page>
+      <vary-page
+        title="${this.title}"
+        image="${this.image}"
+        description="${this.description}"
+      ></vary-page>
       <!-- <h3><span>${this.t.title}:</span> ${this.title}</h3> -->
       <div class="header">
         <!-- <h3>${this.header}</h3> -->
