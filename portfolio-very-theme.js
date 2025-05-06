@@ -21,8 +21,8 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.title = "";
-    this.header = ""; //Yes you would do the whole this.thing bc this is being called in aother class
+    this.title = " ";
+    this.header = " "; //Yes you would do the whole this.thing bc this is being called in aother class
     this.title = "Pages ";
     this.description = "";
     this.image = "";

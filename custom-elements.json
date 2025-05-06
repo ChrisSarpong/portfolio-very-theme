@@ -31,8 +31,9 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
-              "attribute": "title"
+              "default": "\"Pages \"",
+              "attribute": "title",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -43,6 +44,28 @@
               },
               "default": "\"\"",
               "attribute": "header"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "description",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "image",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -59,8 +82,9 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"\"",
-              "fieldName": "title"
+              "default": "\"Pages \"",
+              "fieldName": "title",
+              "attribute": "title"
             },
             {
               "name": "header",
@@ -69,6 +93,22 @@
               },
               "default": "\"\"",
               "fieldName": "header"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "description"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "image"
             }
           ],
           "mixins": [
@@ -149,6 +189,15 @@
                 "text": "object"
               },
               "default": "{ ...this.t, title: \"Title\", }"
+            },
+            {
+              "kind": "field",
+              "name": "activeButton",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "activeButton"
             }
           ],
           "attributes": [
@@ -167,6 +216,13 @@
               },
               "default": "\"\"",
               "fieldName": "header"
+            },
+            {
+              "name": "activeButton",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "activeButton"
             }
           ],
           "mixins": [
@@ -234,6 +290,124 @@
               "type": {
                 "text": "string"
               },
+              "default": "\"fdf \"",
+              "attribute": "title",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "description",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "image",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"fdf \"",
+              "fieldName": "title"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "description"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "image"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "vary-page",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VaryPage",
+          "declaration": {
+            "name": "VaryPage",
+            "module": "vary-page.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "VaryPage",
+            "module": "vary-page.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "vary-top.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`vary-top`",
+          "name": "VaryTop",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
               "default": "\"\"",
               "attribute": "title"
             },
@@ -270,24 +444,24 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "vary-page",
+          "tagName": "vary-top",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "VaryPage",
+          "name": "VaryTop",
           "declaration": {
-            "name": "VaryPage",
-            "module": "vary-page.js"
+            "name": "VaryTop",
+            "module": "vary-top.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "declaration": {
-            "name": "VaryPage",
-            "module": "vary-page.js"
+            "name": "VaryTop",
+            "module": "vary-top.js"
           }
         }
       ]

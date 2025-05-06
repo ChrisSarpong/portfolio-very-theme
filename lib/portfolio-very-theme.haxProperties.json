@@ -32,6 +32,18 @@
         "title": "header",
         "description": "",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "description",
+        "title": "description",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "image",
+        "title": "image",
+        "description": "",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [],
@@ -49,8 +61,10 @@
       "tag": "portfolio-very-theme",
       "content": "",
       "properties": {
-        "title": "\"\"",
-        "header": "\"\""
+        "title": "\"Pages \"",
+        "header": "\"\"",
+        "description": "\"\"",
+        "image": "\"\""
       }
     }
   ]

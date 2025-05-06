@@ -46,6 +46,10 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
           display: block;
           color: var(--ddd-theme-primary);
           /* background-color: var(--ddd-theme-accent); */
+          width: 100vw; /* this means viewpoint */
+          height: 100vh;
+          box-sizing: border-box;
+          overflow: hidden;
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
@@ -54,34 +58,48 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
           width: 100%;
           height: 100%;
           display: flex;
-          flex-direction: column;
-          margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-4);
+          flex-direction: column; /* added to fix over flow*/
+          justify-content: center; /* added to fix over flow*/
+          align-items: center; /* added to fix over flow*/
+          box-sizing: border-box;
+          /* margin: var(--ddd-spacing-2); removed to let items fill page ?
+          padding: var(--ddd-spacing-4); */
         }
         h3 span {
           font-size: var(--vary-page-label-font-size, var(--ddd-font-size-s));
-        } /* // need to define image and description and image */
+        }
         .Pages {
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
-          align-items: flex-start;
+          justify-content: center;
+          align-items: center;
           text-align: left;
+          width: 100%;
+          max-width: 1200px;
           height: 100%;
+          padding: var(--ddd-spacing-4);
+          box-sizing: border-box;
+          gap: var(--ddd-spacing-4); /* add padding to the image */
+          /* overflow: hidden; */
         }
         .text-container {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          margin-right: auto;
+          flex: 1;
+          /* margin-right: auto; */
         }
         .img {
-          width: 100%;
+          /* add styling to image here. Add boarder */
+          width: auto;
           height: auto;
-          max-width: 600px;
+          max-width: 400px;
+          object-fit: contain;
           border-radius: 8px;
-          margin-top: 0;
-          margin-left: auto;
+          flex-shrink: 0;
+          /* margin-top: 0;
+          box-sizing: auto;
+          margin-left: auto; */
         }
         .Pages h1 {
           margin: 0;
@@ -90,11 +108,44 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
         .Pages p {
           margin: 0;
           margin-top: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-m);
+          font-size: var(--ddd-font-size-l);
         }
         .Description {
           margin: 0;
           margin-top: var(--ddd-spacing-2);
+        }
+        .resume-button {
+          /*added for the resume button */
+          margin-top: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          background-color: var(--ddd-theme-accent);
+          color: var(--ddd-theme-default-coalyGray);
+          border: none;
+          border-radius: var(--ddd-border-radius);
+          font-size: var(--ddd-font-size-m);
+          cursor: pointer;
+        }
+        .resume-button:hover {
+          background-color: var(--ddd-theme-default-beaver70);
+          color: var(--ddd-theme-accent);
+        }
+        @media (max-width: 768px) {
+          .Pages {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          .img {
+            max-width: 100%;
+            margin-top: var(--ddd-spacing-2);
+          }
+          .text-container {
+            align-items: center;
+            text-align: center;
+          }
+          .resume-button {
+            width: 100%;
+            max-width: 300px;
         }
       `,
     ];
@@ -102,12 +153,21 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   // using the slotted method so you can jsut call all of them in HTML
+  // added resume button to this this page at line 144
   render() {
     return html` <div class="wrapper">
       <div class="Pages">
         <div class="text-container">
           <h1>${this.title}</h1>
           <p>${this.description}</p>
+          ${this.title === "Resume"
+            ? html`<button
+                class="resume-button"
+                @click="${this._handleResumeClick}"
+              >
+                Download Resume
+              </button>`
+            : ""}
         </div>
         <img
           src="${this.image}"
@@ -118,7 +178,10 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
       </div>
     </div>`;
   }
-
+  _handleResumeClick() {
+    // Hopefully this will open the resume in a new tab
+    window.open("./Sarpong.Resume.jpg", "_blank");
+  }
   /**
    * haxProperties integration via file reference
    */

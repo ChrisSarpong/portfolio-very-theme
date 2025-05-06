@@ -32,6 +32,12 @@
         "title": "header",
         "description": "",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "activeButton",
+        "title": "activeButton",
+        "description": "",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [],

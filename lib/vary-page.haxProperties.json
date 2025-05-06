@@ -26,6 +26,18 @@
         "title": "title",
         "description": "",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "description",
+        "title": "description",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "image",
+        "title": "image",
+        "description": "",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [],
@@ -43,7 +55,9 @@
       "tag": "vary-page",
       "content": "",
       "properties": {
-        "title": "\"\""
+        "title": "\"fdf \"",
+        "description": "\"\"",
+        "image": "\"\""
       }
     }
   ]
