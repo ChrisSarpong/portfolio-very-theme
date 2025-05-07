@@ -7,6 +7,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./vary-header.js";
 import "./vary-page.js";
+import "./vary-top.js";
 
 /**
  * `portfolio-very-theme`
@@ -57,8 +58,8 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
-          margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-4);
+          margin: 0;
+          padding: 0;
         }
         h3 span {
           font-size: var(
@@ -72,9 +73,12 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   render() {
+    console.log("PortfolioVeryTheme ID:", this.id);
     return html` <div class="wrapper">
       <vary-header></vary-header>
+      <vary-top> </vary-top>
       <vary-page
+        id="${this.id}"
         title="${this.title}"
         image="${this.image}"
         description="${this.description}"

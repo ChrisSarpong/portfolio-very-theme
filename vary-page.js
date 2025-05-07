@@ -45,12 +45,34 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
         :host {
           display: block;
           color: var(--ddd-theme-primary);
-          /* background-color: var(--ddd-theme-accent); */
+          /* background-color: var(--ddd-theme-default-white);  */
           width: 100vw; /* this means viewpoint */
           height: 100vh;
           box-sizing: border-box;
           overflow: hidden;
           font-family: var(--ddd-font-navigation);
+          margin: 0;
+          padding: 0;
+        }
+        :host([id="page-one"]){
+          background-color: var(--ddd-theme-default-navy40);
+          color: var(--ddd-theme-default-coalyGray);
+        }
+        :host([id="page-two"]){
+          background-color: var(--ddd-theme-default-navy60);
+          color: var(--ddd-theme-default-coalyGray);
+        }
+        :host([id="page-three"]){
+          background-color: var(--ddd-theme-default-navy65);
+          color: var(--ddd-theme-default-coalyGray);
+        }
+        :host([id="page-four"]){
+          background-color: var(--ddd-theme-default-navy70);
+          color: var(--ddd-theme-default-coalyGray);
+        }
+        :host([id="page-five"]){
+          background-color: var(--ddd-theme-default-navy80);
+          color: var(--ddd-theme-default-coalyGray);
         }
         .wrapper {
           margin: 0;
@@ -96,6 +118,7 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
           max-width: 400px;
           object-fit: contain;
           border-radius: 8px;
+          border: 3px solid var(--ddd-theme-default-beaverBlue);
           flex-shrink: 0;
           /* margin-top: 0;
           box-sizing: auto;
@@ -107,7 +130,7 @@ export class VaryPage extends DDDSuper(I18NMixin(LitElement)) {
         }
         .Pages p {
           margin: 0;
-          margin-top: var(--ddd-spacing-2);
+          margin-top: 0;
           font-size: var(--ddd-font-size-l);
         }
         .Description {

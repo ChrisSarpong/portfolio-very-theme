@@ -16,11 +16,15 @@
         margin: 0;
         padding: 0;
       }
+      html {
+      scroll-behavior: smooth;
+      }
       #demo {
         margin: var(--ddd-spacing-2);
       }
       portfolio-very-theme {
-        margin: var(--ddd-spacing-2);
+        margin:0;
+        
         /* border: var(--ddd-border-md);
         border-radius: var(--ddd-radius-lg); taken out bc it was creating a boarder */ 
       }
@@ -29,7 +33,7 @@
       }
       #example {
         --portfolio-very-theme-font-size: var(--ddd-font-size-l);
-        background-color: var(--ddd-accent-2); /* this is changing the colors to green, idk why  */
+        background-color: var(--ddd-theme-default-landgrantBrown); /*this is changing the colors to green, idk why  */
         color: var(--ddd-primary-17);
       }
     </style>
@@ -39,22 +43,13 @@
 
   <body>
     <div id="demo">
-      <vary-header .pages="${[
-        { title: 'About', id: 'page-one' },
-        { title: 'Resume', id: 'page-two' },
-        { title: 'Projects', id: 'page-three' },
-        { title: 'Work Experience', id: 'page-four' },
-        { title: 'Contact Me', id: 'page-five' },
-      ]}"></vary-header>
-      <h1>portfolio-very-theme</h1> <!-- Delete this when time to submit-->
-      <!-- this is going to do whatever the tag's defaults are -->
-      
-    <portfolio-very-theme id="page-one" data-accent="2" data-primary="17" title = "About" description=" This is chrisyopher sarpong when he had turte illness." image="./Headshot.jpg " ></portfolio-very-theme>
+      <vary-header></vary-header>
+    <portfolio-very-theme id="page-one" data-accent="2" data-primary="17" title = "About" description="Hi, I’m Christopher Sarpong, a Human-Centered Design and Development student at Penn State. I’m passionate about using technology to solve real-world problems—whether that’s redesigning heavy machinery for sustainability, applying AI to disaster recovery research, or leading initiatives that promote equity, innovation, and student success on campus." image="./Headshot.jpg " ></portfolio-very-theme>
      <portfolio-very-theme id="page-two" data-accent="2" data-primary="17" title = "Resume" description="As a multidisciplinary designer, researcher, and campus leader at Penn State, I combine technical skills in software, data, and design with a deep commitment to inclusive innovation—driving projects from engineering redesign to AI-powered decision-making in crisis contexts." image="./Sarpong.Resume.jpg" ></portfolio-very-theme>
-     <portfolio-very-theme id="page-three" data-accent="2" data-primary="17" title = "Projects" description=" This is where projects go, but look a cool crocidle" image="https://www.shutterstock.com/image-vector/illustration-crocodile-good-pose-using-600nw-1881341704.jpg" ></portfolio-very-theme>
-     <portfolio-very-theme id="page-four" data-accent="2" data-primary="17" title = "Work Experence" description=" PLANKETOOOOOOOOOn" image=" https://www.picgifs.com/clip-art/cartoons/spongebob/clip-art-spongebob-838146.jpg" ></portfolio-very-theme>
-      <portfolio-very-theme id="page-five" data-accent="2" data-primary="17" title = "Contact ME" description=" moooooooooooo!" image="https://t3.ftcdn.net/jpg/02/97/85/52/360_F_297855292_s7F5zARGBAVz9EN3jICdVq3TbNgJcLvL.jpg" ></portfolio-very-theme>
-      
+     <portfolio-very-theme id="page-three" data-accent="2" data-primary="17" title = "Projects" description="One of the projects I’m most proud of at Penn State is developing a chatbot capable of delivering real-time information on everything from weather and dining options to movies and TV shows. This project sparked my interest in conversational AI, and I’m currently working on expanding its functionality into a full-featured application." image="./Chatbot.png" ></portfolio-very-theme>
+     <portfolio-very-theme id="page-four" data-accent="2" data-primary="17" title = "Work Experence" description="A Human-Centered Design and Development student at Penn State with research experience in the Human in Computing and Cognition Lab, where I contribute to disaster recovery frameworks and explore the role of AI in optimizing human decision-making. As a shift lead at the Paul Robeson Cultural Center, I help manage daily operations, lead tours, and coordinate multicultural programs that foster inclusion and community engagement. I’m passionate about designing people-first solutions that blend technology, equity, and impact." image="./Job.jpeg" ></portfolio-very-theme>
+      <portfolio-very-theme id="page-five" data-accent="2" data-primary="17" title = "Contact Me" description=" Cjs7724@psu.edu" image="https://t3.ftcdn.net/jpg/02/97/85/52/360_F_297855292_s7F5zARGBAVz9EN3jICdVq3TbNgJcLvL.jpg" ></portfolio-very-theme>
+      <vary-top id="Top"></vary-top>
     </div>
     <script type="module" src="./portfolio-very-theme.js"></script>
 

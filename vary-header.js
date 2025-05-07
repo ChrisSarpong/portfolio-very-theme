@@ -21,6 +21,8 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.title = "";
     this.header = "";
+    this.pages = [];
+    this.activeButton = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -34,6 +36,7 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       header: { type: Object },
+      pages: { type: Array },
       activeButton: { type: String }, //made for the stateful buttons
     };
   }
@@ -45,13 +48,13 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
       css`
         :host {
           display: block;
-          color: var(--ddd-theme-primary);
+          color: var(--ddd-theme-default-nittanyNavy);
           /* background-color: var(--ddd-theme-accent); causing random box  */
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
-          margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-4);
+          margin: 0;
+          padding: 0;
         }
         h3 span {
           font-size: var(--vary-header-label-font-size, var(--ddd-font-size-s));
@@ -62,7 +65,7 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          background-color: var(--ddd-theme-accent);
+          background-color: var(--ddd-theme-default-beaver70);
           border: 3px solid var(--ddd-theme-default-keystoneBlack);
           position: fixed;
           /* //this mean that it will move with the page. */
@@ -77,8 +80,8 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
         }
         /* // issue: buttons are not filling to the space  */
         .button {
-          background-color: var(--ddd-theme-default-keystoneYellow);
-          color: var(--ddd-theme-default-keystoneBlack);
+          background-color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--ddd-theme-default-slateMaxLight);
           border: none;
           padding: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-6);
@@ -92,11 +95,11 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-lg);
         }
         .button:hover {
-          background-color: var(--ddd-theme-default-keystoneBlack);
-          color: var(--ddd-theme-default-keystoneYellow);
+          background-color: var(--ddd-theme-default-skyMaxLight);
+          color: var(--ddd-theme-default-nittanyNavy);
         }
         .button:active {
-          background-color: var(--ddd-theme-default-keystoneYellow);
+          background-color: var(--ddd-theme-default-navy40);
           color: var(--ddd-theme-default-keystoneBlack);
         }
       `,
@@ -109,31 +112,21 @@ export class VaryHeader extends DDDSuper(I18NMixin(LitElement)) {
     return html` <div class="wrapper">
       <!-- <h3><span>${this.t.title}:</span> ${this.title}</h3> -->
       <div class="header">
-        <!-- <h3>${this
-          .header}</h3>  If you want the page thing you use this -->
-        <button class="button" @click="${() => (this.title = "About")}">
-          Page One
-        </button>
-        <button class="button" @click="${() => (this.title = "Page Two")}">
-          Page Two
-        </button>
-        <button class="button" @click="${() => (this.title = "Page Three")}">
-          Page Three
-        </button>
-        <button class="button" @click="${() => (this.title = "Page Four")}">
-          Page Four
-        </button>
-        <button class="button" @click="${() => (this.title = "Contact Me")}">
-          Contact Me
+        <!-- <h3>${this.header}</h3>  If you want the page thing you use this -->
+          <a href="#page-one" class="button">About</a>
+        <a href="#page-two" class="button">Resume</a>
+        <a href="#page-three" class="button">Projects</a>
+      <a href="#page-four" class="button">Work Experience</a>
+      <a href="#page-five" class="button">Contact</a>
         </button>
         <slot></slot>
       </div>
     </div>`;
   }
-
-  /**
-   * haxProperties integration via file reference
-   */
 }
+
+/**
+ * haxProperties integration via file reference
+ */
 
 globalThis.customElements.define(VaryHeader.tag, VaryHeader);
