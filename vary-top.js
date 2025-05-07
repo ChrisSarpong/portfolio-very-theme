@@ -48,14 +48,14 @@ export class VaryTop extends DDDSuper(I18NMixin(LitElement)) {
           overflow: hidden;
         }
         .wrapper {
-          margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-4);
+          margin: 0;
+          padding: 0;
           text-align: center;
         }
         .button {
           text-decoration: none;
-          background-color: var(--ddd-theme-default-landgrantBrown);
-          color: var(--ddd-theme-default-slateMaxLight);
+          background-color: var(--ddd-theme-default-beaverBlue);
+          color: var(--ddd-theme-default-beaverBlue);
           border: none;
           padding: var(--ddd-spacing-2);
           width: 50px;
@@ -67,12 +67,12 @@ export class VaryTop extends DDDSuper(I18NMixin(LitElement)) {
           align-items: center;
           cursor: pointer;
           position: fixed;
-          bottom: 20px;
-          right: 20px;
+          bottom: var(--ddd-spacing-5);
+          right: var(--ddd-spacing-5);
           z-index: 8;
         }
         .button:hover {
-          background-color: var(--ddd-theme-primary);
+          background-color: var(--ddd-theme-default-beaverBlue);
           color: var(--ddd-theme-default-white);
         }
         h3 span {
@@ -87,7 +87,6 @@ export class VaryTop extends DDDSuper(I18NMixin(LitElement)) {
     console.log("Rendering VaryTop");
     return html` <div class="wrapper">
       <a href="#Top" class="button">↑</a>
-      <h3><span>${this.t.title}:</span> ${this.title}</h3>
       <slot></slot>
     </div>`;
   }
